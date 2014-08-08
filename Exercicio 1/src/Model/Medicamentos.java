@@ -13,6 +13,10 @@ public class Medicamentos {
 			this.numero = numero;
 		}
 		
+		public Medicamentos() {
+			// TODO Auto-generated constructor stub
+		}
+
 		public String getNome() {
 			return nome;
 		}
@@ -24,6 +28,13 @@ public class Medicamentos {
 		}
 		public void setNumero(String numero) {
 			this.numero = numero;
+		}
+
+		@Override
+		public String toString() {
+			return "Medicamentos "
+					+ "\n[nome=" + nome + ","
+							+ "\n numero=" + numero + "]";
 		}
 		
 		

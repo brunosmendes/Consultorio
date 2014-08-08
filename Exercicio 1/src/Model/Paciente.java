@@ -13,6 +13,10 @@ public class Paciente {
 		this.telefone = telefone;
 	}
 	
+	public Paciente() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -30,6 +34,15 @@ public class Paciente {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	@Override
+	public String toString() {
+		return "Paciente "
+				+ "\n[nome=" + nome + ","
+				+ "\n cpf=" + cpf + ","
+						+ "\n telefone="
+				+ telefone + "]";
 	}
 	
 	

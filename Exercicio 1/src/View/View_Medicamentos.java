@@ -19,10 +19,16 @@ public class View_Medicamentos {
 		return dosagem;
 	}
 	//________________________________________________
-	public String numeroRemedio(){
-		System.out.println("informe o numero do remedio:");
+	public String registroRemedio(){
+		System.out.println("informe o registro do remedio:");
 		String numero = leia.next();
 		return numero;
+	}
+	public int retorno(){
+		System.out.println("1 - Para voltar ao menu");
+		System.out.println("2 - Cadastrar outro remedio");
+		int x = leia.nextInt();
+		return x;
 	}
 	
 }

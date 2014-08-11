@@ -1,5 +1,9 @@
 package Controle;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import Model.Medicamentos;
 import Model.Paciente;
 import View.Menu;
@@ -17,12 +21,13 @@ public class Controle {
 		Agendamento a = new Agendamento();
 		View_Medicamentos m = new View_Medicamentos();
 		View_Paciente p = new View_Paciente();
+
 		//________________________________________________
 		boolean controle=true;
 		int contPaciente=0;
 		int contRemedio=0;
 		//________________________________________________
-		
+		//________________________________________________
 		
 		public void mostraMenu(){
 			int x = menu.menu();
@@ -33,60 +38,88 @@ public class Controle {
 			break;
 			case 2 : c.cadastraMedicamento();
 			break;
+			case 3 : c.agendarConsulta();
+			break;
+			case 4 : c.registrarConsulta();
+			break;
+			case 5 : c.historico();
+			break;
 			}
 		}
 		
 		//________________________________________________
 		public void cadastraPaciente(){
-			while(controle== true && contPaciente<50){
+			ArrayList<Paciente> paciente = new ArrayList<Paciente>();
+			Controle c = new Controle();
+			int x = 0;
+			
+			while(x!=1){
+				Paciente modelP = new Paciente();
 				
-			
-			Paciente[] vetorP = new Paciente[50];
-			vetorP[contPaciente]=new Paciente();
-			
-			String nome = p.nomePaciente();
-			String cpf = p.cpfPaciente();
-			String numero = p.telefonePaciente();
-			
-			
-			vetorP[contPaciente].setNome(nome);
-			vetorP[contPaciente].setCpf(cpf);
-			vetorP[contPaciente].setTelefone(numero);
-			
-			
-			contPaciente++;
-			controle=false;
-			
-//			for(int i=0;i<contPaciente;i++){
-//				System.out.println(vetorP[i]);
-//			}
+				String nome = p.nomePaciente();
+				String cpf = p.cpfPaciente();
+				String numero = p.telefonePaciente();
+				
+				modelP.setNome(nome);
+				modelP.setCpf(cpf);
+				modelP.setTelefone(numero);
+				
+				paciente.add(modelP);
+				x = p.retorno();
+				
 			}
+			System.out.println(Arrays.toString(paciente.toArray()));
+			c.mostraMenu();
 		}
 		//________________________________________________
 		public void cadastraMedicamento(){
-			while(controle== true && contRemedio<50){
-			
+			ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
+			Controle c = new Controle();
+			int x = 0;
+			while(x!=1){
+			Medicamentos modelM = new Medicamentos();
 			
 			String nome = m.nomeMedicamento();
-			String numero = m.numeroRemedio();
+			String numero = m.registroRemedio();
 			
-			Medicamentos[] vetorM = new Medicamentos[50];
-			vetorM[contRemedio]=new Medicamentos();
+			modelM.setNome(nome);
+			modelM.setNumero(numero);
 			
-			vetorM[contRemedio].setNome(nome);
-			vetorM[contRemedio].setNumero(numero);
+			remedios.add(modelM);
 			
-			contRemedio++;
-			controle=false;
+			x = m.retorno();
+			}
+			System.out.println(Arrays.toString(remedios.toArray()));
+			c.mostraMenu();
+		}
+		//________________________________________________
+		public void agendarConsulta(){
 			
-//			for(int i=0;i<contRemedio;i++){
-//			System.out.println(vetorM[i]);
-//		}
 			
 		}
-		
+		//________________________________________________
+		public void registrarConsulta(){
+			
 		}
-		
-	
-
+		//________________________________________________
+		public void historico(){
+			
+		}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

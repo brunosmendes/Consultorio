@@ -23,5 +23,11 @@ public class View_Paciente {
 		String telefone = leia.next();
 		return telefone;
 	}
+	public int retorno(){
+		System.out.println("1 - Para voltar ao menu");
+		System.out.println("2 - Cadastrar outro paciente");
+		int x = leia.nextInt();
+		return x;
+	}
 	
 }

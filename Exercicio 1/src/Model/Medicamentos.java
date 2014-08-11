@@ -3,14 +3,14 @@ package Model;
 public class Medicamentos {
 	
 		String nome;
-		String numero;
+		String registro;
 		
 		
 		
 		public Medicamentos(String nome, String numero) {
 			super();
 			this.nome = nome;
-			this.numero = numero;
+			this.registro = numero;
 		}
 		
 		public Medicamentos() {
@@ -24,17 +24,17 @@ public class Medicamentos {
 			this.nome = nome;
 		}
 		public String getNumero() {
-			return numero;
+			return registro;
 		}
 		public void setNumero(String numero) {
-			this.numero = numero;
+			this.registro = numero;
 		}
 
 		@Override
 		public String toString() {
 			return "Medicamentos "
 					+ "\n[nome=" + nome + ","
-							+ "\n numero=" + numero + "]";
+							+ "\n registro=" + registro + "]";
 		}
 		
 		

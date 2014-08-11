@@ -4,6 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import Model.Consultas;
 import Model.Medicamentos;
 import Model.Paciente;
 import View.Menu;
@@ -21,11 +22,8 @@ public class Controle {
 		Agendamento a = new Agendamento();
 		View_Medicamentos m = new View_Medicamentos();
 		View_Paciente p = new View_Paciente();
-
+		
 		//________________________________________________
-		boolean controle=true;
-		int contPaciente=0;
-		int contRemedio=0;
 		//________________________________________________
 		//________________________________________________
 		
@@ -76,24 +74,39 @@ public class Controle {
 			ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
 			Controle c = new Controle();
 			int x = 0;
+			
 			while(x!=1){
-			Medicamentos modelM = new Medicamentos();
-			
-			String nome = m.nomeMedicamento();
-			String numero = m.registroRemedio();
-			
-			modelM.setNome(nome);
-			modelM.setNumero(numero);
-			
-			remedios.add(modelM);
-			
-			x = m.retorno();
+				Medicamentos modelM = new Medicamentos();
+				
+				String nome = m.nomeMedicamento();
+				String numero = m.registroRemedio();
+				
+				modelM.setNome(nome);
+				modelM.setNumero(numero);
+				
+				remedios.add(modelM);
+				
+				x = m.retorno();
 			}
 			System.out.println(Arrays.toString(remedios.toArray()));
 			c.mostraMenu();
 		}
 		//________________________________________________
 		public void agendarConsulta(){
+				ArrayList<Consultas> consultas = new ArrayList<Consultas>();
+				Controle c = new Controle();
+				
+				Consultas modelC = new Consultas();
+				
+				String paciente = a.nomeAgendar();
+				String data = a.dataAgendamento();
+				String hora = a.horaAgendamento();
+				
+				modelC.setPaciente(paciente);
+				modelC.setData(data);
+				modelC.setHora(hora);
+				
+				consultas.add(modelC);
 			
 			
 		}

@@ -17,5 +17,10 @@ Scanner leia = new Scanner(System.in);
 		String data = leia.next();
 		return data;
 	}
-
+	//________________________________________________
+	public String horaAgendamento(){
+		System.out.println("informe a hora:");
+		String hora = leia.next();
+		return hora;
+	}
 }

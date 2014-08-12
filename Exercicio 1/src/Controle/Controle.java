@@ -2,9 +2,11 @@ package Controle;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import Model.Consultas;
 import Model.Medicamentos;
 import Model.Paciente;
+import Model.RegistroDeConsulta;
 import View.Menu;
 import View.Registro;
 import View.Agendamento;
@@ -21,10 +23,12 @@ public class Controle {
 		View_Medicamentos m = new View_Medicamentos();
 		View_Paciente p = new View_Paciente();
 		
+		
 		//________________________________________________
 		ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 		ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
 		ArrayList<Consultas> consultas = new ArrayList<Consultas>();
+		ArrayList<RegistroDeConsulta> registro = new ArrayList<RegistroDeConsulta>();
 		//________________________________________________
 		//________________________________________________
 		
@@ -60,10 +64,8 @@ public class Controle {
 				Paciente modelP = new Paciente();
 
 				String nome = p.nomePaciente();
-
-
-
 				String cpf = p.cpfPaciente();
+				
 				if (cpfCadastrado(cpf) == null)
 				{				
 					String numero = p.telefonePaciente();
@@ -75,15 +77,15 @@ public class Controle {
 				}
 				
 				else
-					System.out.println("CPF cadastrado");
-				x = p.retorno();
+					System.out.println("CPF já cadastrado");
+					x = p.retorno();
 
 			}
 
 			System.out.println(Arrays.toString(pacientes.toArray()));
 			//this.mostraMenu();
 		}
-		
+		//________________________________________________
 		public Paciente cpfCadastrado(String cpf)
 		{
 			Paciente p = null;
@@ -98,7 +100,6 @@ public class Controle {
 			}
 			return p;
 		}
-		
 		//________________________________________________
 		public void cadastraMedicamento(){
 			
@@ -136,9 +137,8 @@ public class Controle {
 				{
 					//alterar para objeto date
 					String data = a.dataAgendamento();
-					
-					
 					String hora = a.horaAgendamento();										
+					
 					modelC.setPaciente(paciente);					
 					modelC.setData(data);
 					modelC.setHora(hora);
@@ -155,7 +155,29 @@ public class Controle {
 		}
 		//________________________________________________
 		public void registrarConsulta(){
+				RegistroDeConsulta modelR = new RegistroDeConsulta();
+				Paciente paciente = new Paciente();
+				
+				String cpf = a.cpfAgendar();
+				paciente = cpfCadastrado(cpf);
+				
+				if ( paciente != null )
+				{
+					
+				
+					String prescricao = r.prescricao();
+					String receituario = r.receituario();
+					
+					modelR.setPaciente(paciente);
+					modelR.setPrescricao(prescricao);
+					modelR.setReceituario(receituario);
+					
+					registro.add(modelR);
+				}
+				else
+					System.out.println("CPF nao cadastrado");
 			
+			System.out.println(Arrays.toString(registro.toArray()));
 		}
 		//________________________________________________
 		public void historico(){

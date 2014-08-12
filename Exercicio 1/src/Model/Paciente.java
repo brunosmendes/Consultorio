@@ -38,11 +38,11 @@ public class Paciente {
 
 	@Override
 	public String toString() {
-		return "\nPaciente "
+		return "Paciente "
 				+ "\n[nome=" + nome + ","
 				+ "\n cpf=" + cpf + ","
 						+ "\n telefone="
-				+ telefone + "]"+"\n";
+				+ telefone + "]";
 	}
 	
 	

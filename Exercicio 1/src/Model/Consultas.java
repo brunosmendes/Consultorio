@@ -32,9 +32,9 @@ public class Consultas {
 	}
 	@Override
 	public String toString() {
-		return "\nConsultas "
+		return "Consultas "
 				+ "\n[Data=" + Data + ""
-						+ "\n, Paciente=" + paciente + ""
+						+ "\n" + paciente + ""
 								+ "\n, Hora="+ Hora + "]";
 	}
 	

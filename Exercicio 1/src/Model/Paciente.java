@@ -1,9 +1,9 @@
 package Model;
 
 public class Paciente {
-	String nome;
-	String cpf;
-	String telefone;
+	private String nome;
+	private String cpf;
+	private String telefone;
 	
 	
 	public Paciente(String nome, String cpf, String telefone) {

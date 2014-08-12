@@ -6,8 +6,8 @@ public class Agendamento {
 Scanner leia = new Scanner(System.in);
 	
 	//________________________________________________
-	public String nomeAgendar(){
-		System.out.println("informe o nome:");
+	public String cpfAgendar(){
+		System.out.println("informe o cpf:");
 		String nome = leia.next();
 		return nome;
 	}

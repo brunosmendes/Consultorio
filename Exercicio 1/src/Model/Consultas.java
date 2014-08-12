@@ -1,9 +1,14 @@
 package Model;
 
+import java.util.Date;
+
 public class Consultas {
-	String Data;
-	String Paciente;
-	String Hora;
+	private String  Data;
+	//private Date  Data = new Date();
+	private Paciente paciente;
+	
+	
+	private String Hora;
 	
 	
 	
@@ -13,11 +18,11 @@ public class Consultas {
 	public void setData(String data) {
 		Data = data;
 	}
-	public String getPaciente() {
-		return Paciente;
+	public Paciente getPaciente() {
+		return paciente;
 	}
-	public void setPaciente(String paciente) {
-		Paciente = paciente;
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
 	}
 	public String getHora() {
 		return Hora;
@@ -29,7 +34,7 @@ public class Consultas {
 	public String toString() {
 		return "\nConsultas "
 				+ "\n[Data=" + Data + ""
-						+ "\n, Paciente=" + Paciente + ""
+						+ "\n, Paciente=" + paciente + ""
 								+ "\n, Hora="+ Hora + "]";
 	}
 	

@@ -1,9 +1,7 @@
 package Controle;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import Model.Consultas;
 import Model.Medicamentos;
 import Model.Paciente;
@@ -24,55 +22,87 @@ public class Controle {
 		View_Paciente p = new View_Paciente();
 		
 		//________________________________________________
+		ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
+		ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
+		ArrayList<Consultas> consultas = new ArrayList<Consultas>();
 		//________________________________________________
 		//________________________________________________
 		
 		public void mostraMenu(){
-			int x = menu.menu();
-			Controle c = new Controle();
+			int x;		
+			do{
+			x = menu.menu();
+			//Controle c = new Controle();
 			
 			switch(x){
-			case 1 : c.cadastraPaciente();
+			case 1 : this.cadastraPaciente();
 			break;
-			case 2 : c.cadastraMedicamento();
+			case 2 : this.cadastraMedicamento();
 			break;
-			case 3 : c.agendarConsulta();
+			case 3 : this.agendarConsulta();
 			break;
-			case 4 : c.registrarConsulta();
+			case 4 : this.registrarConsulta();
 			break;
-			case 5 : c.historico();
+			case 5 : this.historico();
 			break;
 			}
+			}while(x<10);
 		}
 		
 		//________________________________________________
 		public void cadastraPaciente(){
-			ArrayList<Paciente> paciente = new ArrayList<Paciente>();
-			Controle c = new Controle();
+
+			//Controle c = new Controle();
 			int x = 0;
-			
-			while(x!=1){
+
+			while(x!=1)
+			{
 				Paciente modelP = new Paciente();
-				
+
 				String nome = p.nomePaciente();
+
+
+
 				String cpf = p.cpfPaciente();
-				String numero = p.telefonePaciente();
+				if (cpfCadastrado(cpf) == null)
+				{				
+					String numero = p.telefonePaciente();
+					modelP.setNome(nome);
+					modelP.setCpf(cpf);
+					modelP.setTelefone(numero);
+
+					pacientes.add(modelP);
+				}
 				
-				modelP.setNome(nome);
-				modelP.setCpf(cpf);
-				modelP.setTelefone(numero);
-				
-				paciente.add(modelP);
+				else
+					System.out.println("CPF cadastrado");
 				x = p.retorno();
-				
+
 			}
-			System.out.println(Arrays.toString(paciente.toArray()));
-			c.mostraMenu();
+
+			System.out.println(Arrays.toString(pacientes.toArray()));
+			//this.mostraMenu();
 		}
+		
+		public Paciente cpfCadastrado(String cpf)
+		{
+			Paciente p = null;
+
+			for (Paciente paciente: pacientes) {
+
+				if (paciente.getCpf().equals(cpf)) {
+					//
+					p = paciente;
+					break;				
+				}					
+			}
+			return p;
+		}
+		
 		//________________________________________________
 		public void cadastraMedicamento(){
-			ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
-			Controle c = new Controle();
+			
+			//Controle c = new Controle();
 			int x = 0;
 			
 			while(x!=1){
@@ -89,25 +119,38 @@ public class Controle {
 				x = m.retorno();
 			}
 			System.out.println(Arrays.toString(remedios.toArray()));
-			c.mostraMenu();
+			//c.mostraMenu();
 		}
 		//________________________________________________
 		public void agendarConsulta(){
-				ArrayList<Consultas> consultas = new ArrayList<Consultas>();
-				Controle c = new Controle();
+				
+				//Controle c = new Controle();
 				
 				Consultas modelC = new Consultas();
+				Paciente paciente = new Paciente();
 				
-				String paciente = a.nomeAgendar();
-				String data = a.dataAgendamento();
-				String hora = a.horaAgendamento();
+				String cpf = a.cpfAgendar();
+				paciente = cpfCadastrado(cpf);
 				
-				modelC.setPaciente(paciente);
-				modelC.setData(data);
-				modelC.setHora(hora);
+				if ( paciente != null )
+				{
+					//alterar para objeto date
+					String data = a.dataAgendamento();
+					
+					
+					String hora = a.horaAgendamento();										
+					modelC.setPaciente(paciente);					
+					modelC.setData(data);
+					modelC.setHora(hora);
+					
+					consultas.add(modelC);
+					
+				}
+				else
+					System.out.println("CPF nao cadastrado");
 				
-				consultas.add(modelC);
-			
+				
+				System.out.println(Arrays.toString(consultas.toArray()));
 			
 		}
 		//________________________________________________
@@ -118,21 +161,6 @@ public class Controle {
 		public void historico(){
 			
 		}
+		
+		
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

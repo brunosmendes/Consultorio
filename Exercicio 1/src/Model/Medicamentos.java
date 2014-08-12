@@ -2,8 +2,8 @@ package Model;
 
 public class Medicamentos {
 	
-		String nome;
-		String registro;
+		private String nome;
+		private String registro;
 		
 		
 		

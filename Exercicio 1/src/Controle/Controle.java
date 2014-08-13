@@ -1,8 +1,8 @@
 package Controle;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import Model.Consultas;
 import Model.Medicamentos;
 import Model.Paciente;
@@ -18,21 +18,21 @@ public class Controle {
 	
 		//________________________________________________
 		Menu menu = new Menu();
-		Registro r = new Registro();
-		Agendamento a = new Agendamento();
-		View_Medicamentos m = new View_Medicamentos();
-		View_Paciente p = new View_Paciente();
+		Registro registro = new Registro();
+		Agendamento agenda = new Agendamento();
+		View_Medicamentos view_medicamentos = new View_Medicamentos();
+		View_Paciente view_paciente = new View_Paciente();
 		
 		
 		//________________________________________________
 		ArrayList<Paciente> pacientes = new ArrayList<Paciente>();
 		ArrayList<Medicamentos> remedios = new ArrayList<Medicamentos>();
 		ArrayList<Consultas> consultas = new ArrayList<Consultas>();
-		ArrayList<RegistroDeConsulta> registro = new ArrayList<RegistroDeConsulta>();
+		ArrayList<RegistroDeConsulta> registros = new ArrayList<RegistroDeConsulta>();
 		//________________________________________________
 		//________________________________________________
 		
-		public void mostraMenu(){
+		public void mostraMenu() throws Exception{
 			int x;		
 			do{
 			x = menu.menu();
@@ -57,93 +57,99 @@ public class Controle {
 		public void cadastraPaciente(){
 
 			//Controle c = new Controle();
-			int x = 0;
+			int opcao = 0;
 
-			while(x!=1)
+			while(opcao!=1)
 			{
-				Paciente modelP = new Paciente();
+				Paciente novo_paciente = new Paciente();
 
-				String nome = p.nomePaciente();
-				String cpf = p.cpfPaciente();
+				String nome = view_paciente.nomePaciente();
+				String cpf = view_paciente.cpfPaciente();
 				
 				if (cpfCadastrado(cpf) == null)
 				{				
-					String numero = p.telefonePaciente();
-					modelP.setNome(nome);
-					modelP.setCpf(cpf);
-					modelP.setTelefone(numero);
+					String numero = view_paciente.telefonePaciente();
+					novo_paciente.setNome(nome);
+					novo_paciente.setCpf(cpf);
+					novo_paciente.setTelefone(numero);
 
-					pacientes.add(modelP);
+					pacientes.add(novo_paciente);
 				}
 				
 				else
 					System.out.println("CPF já cadastrado");
-					x = p.retorno();
+					opcao = view_paciente.retorno();
 
 			}
-
+			//exibe a lista de pacientes - tornar um metodo
 			System.out.println(Arrays.toString(pacientes.toArray()));
 			//this.mostraMenu();
 		}
 		//________________________________________________
+		/**
+		 * Metodo que percorre a lista de pacientes comparando o cpf
+		 * @param cpf
+		 * @return objeto do tipo paciente
+		 */
 		public Paciente cpfCadastrado(String cpf)
 		{
-			Paciente p = null;
+			Paciente paciente_encontrado = null;
 
 			for (Paciente paciente: pacientes) {
 
 				if (paciente.getCpf().equals(cpf)) {
 					//
-					p = paciente;
+					paciente_encontrado = paciente;
 					break;				
 				}					
 			}
-			return p;
+			return paciente_encontrado;
 		}
 		//________________________________________________
 		public void cadastraMedicamento(){
 			
 			//Controle c = new Controle();
-			int x = 0;
+			int opcao = 0;
 			
-			while(x!=1){
-				Medicamentos modelM = new Medicamentos();
+			while(opcao!=1){
+				Medicamentos novo_medicamento = new Medicamentos();
 				
-				String nome = m.nomeMedicamento();
-				String numero = m.registroRemedio();
+				String nome = view_medicamentos.nomeMedicamento();
+				String numero = view_medicamentos.registroRemedio();
 				
-				modelM.setNome(nome);
-				modelM.setNumero(numero);
+				novo_medicamento.setNome(nome);
+				novo_medicamento.setNumero(numero);
 				
-				remedios.add(modelM);
+				remedios.add(novo_medicamento);
 				
-				x = m.retorno();
+				opcao = view_medicamentos.retorno();
 			}
+			//exibe lista de medicamentos - criar metodo
 			System.out.println(Arrays.toString(remedios.toArray()));
 			//c.mostraMenu();
 		}
 		//________________________________________________
-		public void agendarConsulta(){
+		public void agendarConsulta() throws Exception{
 				
 				//Controle c = new Controle();
 				
-				Consultas modelC = new Consultas();
+				Consultas nova_consulta = new Consultas();
 				Paciente paciente = new Paciente();
 				
-				String cpf = a.cpfAgendar();
+				String cpf = agenda.cpfAgendar();
 				paciente = cpfCadastrado(cpf);
 				
 				if ( paciente != null )
 				{
 					//alterar para objeto date
-					String data = a.dataAgendamento();
-					String hora = a.horaAgendamento();										
+					Date data = (Date) agenda.dataAgendamento();
+					//String hora = agenda.horaAgendamento();										
 					
-					modelC.setPaciente(paciente);					
-					modelC.setData(data);
-					modelC.setHora(hora);
+					nova_consulta.setPaciente(paciente);					
+					nova_consulta.setData(data);
+					//nova_consulta.setHora(hora);
 					
-					consultas.add(modelC);
+					consultas.add(nova_consulta);
 					
 				}
 				else
@@ -155,29 +161,29 @@ public class Controle {
 		}
 		//________________________________________________
 		public void registrarConsulta(){
-				RegistroDeConsulta modelR = new RegistroDeConsulta();
+				RegistroDeConsulta registro_consulta = new RegistroDeConsulta();
 				Paciente paciente = new Paciente();
 				
-				String cpf = a.cpfAgendar();
+				String cpf = agenda.cpfAgendar();
 				paciente = cpfCadastrado(cpf);
 				
 				if ( paciente != null )
 				{
 					
 				
-					String prescricao = r.prescricao();
-					String receituario = r.receituario();
+					String prescricao = registro.prescricao();
+					String receituario = registro.receituario();
 					
-					modelR.setPaciente(paciente);
-					modelR.setPrescricao(prescricao);
-					modelR.setReceituario(receituario);
+					registro_consulta.setPaciente(paciente);
+					registro_consulta.setPrescricao(prescricao);
+					registro_consulta.setReceituario(receituario);
 					
-					registro.add(modelR);
+					registros.add(registro_consulta);
 				}
 				else
 					System.out.println("CPF nao cadastrado");
 			
-			System.out.println(Arrays.toString(registro.toArray()));
+			System.out.println(Arrays.toString(registros.toArray()));
 		}
 		//________________________________________________
 		public void historico(){

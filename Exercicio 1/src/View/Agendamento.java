@@ -1,35 +1,31 @@
 package View;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
 public class Agendamento {
 Scanner leia = new Scanner(System.in);
-	
-	//________________________________________________
+//________________________________________________
 	public String cpfAgendar(){
 		System.out.println("informe o cpf:");
 		String nome = leia.next();
 		return nome;
 	}
 	//________________________________________________
-	public String dataAgendamento(){
-		//Date data = new Date();
-//		   SimpleDateFormat formatador = new SimpleDateFormat("dd/mm/yyyy hh:mm");
-//		   String dataString = 
-		  
-		 
-//		String dataString = JOptionPane.showInputDialog("Digite a data:");
-//		Date data1 = formatador.parse(dataString);
+	public Date dataAgendamento() throws ParseException{
+		Date data = new Date();
+		SimpleDateFormat formatador = new SimpleDateFormat("dd/mm/yyyy hh:mm");
+		//String dataString = JOptionPane.showInputDialog("Digite a data:");
+		//Date data1 = formatador.parse(dataString);
 //		System.out.println(data1);
-//		JOptionPane.showMessageDialog(null, formatador.format(data));
-		
-		
+	//	JOptionPane.showMessageDialog(null, formatador.format(data));
+
+
 		System.out.println("informe a data:");
-		String data = leia.next();
+		data = formatador.parse(leia.next());
+		//String data = leia.next();
 		return data;
 	}
 	//________________________________________________

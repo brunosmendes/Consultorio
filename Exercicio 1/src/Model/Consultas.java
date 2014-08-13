@@ -3,7 +3,7 @@ package Model;
 import java.util.Date;
 
 public class Consultas {
-	private String  Data;
+	private Date  Data;
 	//private Date  Data = new Date();
 	private Paciente paciente;
 	
@@ -12,10 +12,10 @@ public class Consultas {
 	
 	
 	
-	public String getData() {
+	public Date getData() {
 		return Data;
 	}
-	public void setData(String data) {
+	public void setData(Date data) {
 		Data = data;
 	}
 	public Paciente getPaciente() {

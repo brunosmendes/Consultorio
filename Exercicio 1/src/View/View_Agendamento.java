@@ -5,12 +5,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class Agendamento {
+public class View_Agendamento {
 Scanner leia = new Scanner(System.in);
 //________________________________________________
 	public String cpfAgendar(){
 		System.out.println("informe o cpf:");
-		String nome = leia.next();
+		String nome = leia.nextLine();
 		return nome;
 	}
 	//________________________________________________
@@ -24,14 +24,14 @@ Scanner leia = new Scanner(System.in);
 
 
 		System.out.println("informe a data:");
-		data = formatador.parse(leia.next());
-		//String data = leia.next();
+		data = formatador.parse(leia.nextLine());
+		//String data = leia.nextLine();
 		return data;
 	}
 	//________________________________________________
 	public String horaAgendamento(){
 		System.out.println("informe a hora:");
-		String hora = leia.next();
+		String hora = leia.nextLine();
 		return hora;
 	}
 }

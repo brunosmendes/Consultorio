@@ -7,9 +7,9 @@ import Model.Consultas;
 import Model.Medicamentos;
 import Model.Paciente;
 import Model.RegistroDeConsulta;
-import View.Menu;
-import View.Registro;
-import View.Agendamento;
+import View.View_Menu;
+import View.View_Registro;
+import View.View_Agendamento;
 import View.View_Medicamentos;
 import View.View_Paciente;
 
@@ -17,9 +17,9 @@ public class Controle {
 
 	
 		//________________________________________________
-		Menu menu = new Menu();
-		Registro registro = new Registro();
-		Agendamento agenda = new Agendamento();
+		View_Menu menu = new View_Menu();
+		View_Registro registro = new View_Registro();
+		View_Agendamento agenda = new View_Agendamento();
 		View_Medicamentos view_medicamentos = new View_Medicamentos();
 		View_Paciente view_paciente = new View_Paciente();
 		
@@ -82,9 +82,16 @@ public class Controle {
 
 			}
 			//exibe a lista de pacientes - tornar um metodo
-			System.out.println(Arrays.toString(pacientes.toArray()));
+			//System.out.println(Arrays.toString(pacientes.toArray()));
+			exibe_lista_pacientes();
 			//this.mostraMenu();
 		}
+		
+		public void exibe_lista_pacientes()
+		{
+			System.out.println(Arrays.toString(pacientes.toArray()));
+		}
+		
 		//________________________________________________
 		/**
 		 * Metodo que percorre a lista de pacientes comparando o cpf
@@ -125,9 +132,17 @@ public class Controle {
 				opcao = view_medicamentos.retorno();
 			}
 			//exibe lista de medicamentos - criar metodo
-			System.out.println(Arrays.toString(remedios.toArray()));
+			//System.out.println(Arrays.toString(remedios.toArray()));
+			exibe_lista_medicamentos();
 			//c.mostraMenu();
 		}
+		
+		public void exibe_lista_medicamentos()
+		{
+			System.out.println(Arrays.toString(remedios.toArray()));
+		}
+		
+		
 		//________________________________________________
 		public void agendarConsulta() throws Exception{
 				

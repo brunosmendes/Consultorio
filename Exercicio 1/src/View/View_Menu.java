@@ -2,7 +2,7 @@ package View;
 
 import java.util.Scanner;
 
-public class Menu {
+public class View_Menu {
 	Scanner leia = new Scanner(System.in);
 	
 	public int menu(){

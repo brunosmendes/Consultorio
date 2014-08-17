@@ -8,19 +8,19 @@ public class View_Paciente {
 	//________________________________________________	
 	public String nomePaciente(){
 		System.out.println("Informe o nome:");
-		String nome = leia.next();
+		String nome = leia.nextLine();
 		return nome;
 	}
 	//________________________________________________		
 	public String cpfPaciente(){
 		System.out.println("informe o CPF:");
-		String cpf = leia.next();
+		String cpf = leia.nextLine();
 		return cpf;
 	}
 	//________________________________________________	
 	public String telefonePaciente(){
 		System.out.println("informe o telefone:");
-		String telefone = leia.next();
+		String telefone = leia.nextLine();
 		return telefone;
 	}
 	public int retorno(){

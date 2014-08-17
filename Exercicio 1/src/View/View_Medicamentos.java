@@ -9,19 +9,19 @@ public class View_Medicamentos {
 	//________________________________________________
 	public String nomeMedicamento(){
 		System.out.println("informe o nome do remedio:");
-		String remedio = leia.next();
+		String remedio = leia.nextLine();
 		return remedio;
 	}
 	//________________________________________________
 	public String dosagemRemedio(){
 		System.out.println("informe a dosagem:");
-		String dosagem = leia.next();
+		String dosagem = leia.nextLine();
 		return dosagem;
 	}
 	//________________________________________________
 	public String registroRemedio(){
 		System.out.println("informe o registro do remedio:");
-		String numero = leia.next();
+		String numero = leia.nextLine();
 		return numero;
 	}
 	public int retorno(){
